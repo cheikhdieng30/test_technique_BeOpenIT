@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{userInfo.name}} - BeOpenIT{% endblock %}
+
+{% block body %}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        /* 100% de la hauteur de la fenêtre */
+        background-image: url('https://www.jeveuxetredatascientist.fr/wp-content/uploads/2022/06/devops.jpg');
+        /* Remplacez par le chemin de votre image */
+        background-size: cover;
+        /* Pour couvrir tout l'arrière-plan */
+        background-position: center;
+        /* Pour centrer l'image */
+        display: flex;
+        justify-content: center;
+        /* Centrer horizontalement */
+        align-items: center;
+        /* Centrer verticalement */
+    }
+
+    .content {
+        height: 100vh;
+        width: 100vw;
+        text-align: center;
+        color: black;
+        /* Couleur du texte */
+        background-color: rgba(0, 0, 0, 0.8);
+        /* Fond semi-transparent pour améliorer la lisibilité */
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        /* Centrer horizontalement */
+        align-items: center;
+        /* Centrer verticalement */
+    }
+</style>
+<div class="home">
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mx-auto">
+                    <div class="card text-center" >
+                        <img class="card-img-top img-fluid" src="{{userInfo.avatar_url}}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Nom: <strong>{{userInfo.name}}</strong> </h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Nombre de repository publics: <strong> {{userInfo.public_repos}} </strong></li>
+                            <li class="list-group-item">Nombre de followers: <strong> {{userInfo['followers']}} </strong></li>
+                            <li class="list-group-item">Nombre de: <strong> {{userInfo['following']}} </strong> </li>
+                        </ul>
+                    </div>
+                    <a class="btn btn-primary mt-2" href="{{ path('app_home') }}">Rechercher à nouveau</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
